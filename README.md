@@ -4,4 +4,4 @@ Prueba Tecnica Flutter Rick and Morthy
 
 ## Getting Started
 
-flutter-apk\app-release.apk ir a esta direccion dentro del proyecto y descargar la apk en algun dispositivo android para la ejecucion 
+/BuildAPksFinal ir a esta direccion dentro del proyecto ahi podras encontrar las apks respectiivas para cada arquitectura.
