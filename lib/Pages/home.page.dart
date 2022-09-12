@@ -45,14 +45,14 @@ class _HomeState extends State<Home> {
                 fontStyle: FontStyle.italic),
           ),
         ),
-        body: SingleChildScrollView(
-            controller: _scrollController,
-            child: data.isEmpty
+        body:  data.isEmpty
                 ? const Center(child: CircularProgressIndicator())
-                : ListView(
+                :  ListView.builder(
+      controller: _scrollController,
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
-                    children: data.map((element) {
+                    itemCount: data.length,
+                     itemBuilder: (_, i) {
                       return Center(
                           child: Container(
                         margin: EdgeInsets.only(
@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
                         width: MediaQuery.of(context).size.width * 0.9,
                         child: Row(
                           children: [
-                            Image.network(element["image"],
+                            Image.network(data[i]["image"],
                                 width:
                                     (MediaQuery.of(context).size.width * 0.9) /
                                         2.1),
@@ -80,7 +80,7 @@ class _HomeState extends State<Home> {
                                                   0.9) /
                                               2.3,
                                           child: Text(
-                                            element['name'],
+                                            data[i]['name'],
                                             textAlign: TextAlign.start,
                                             style: const TextStyle(
                                               fontWeight: FontWeight.bold,
@@ -92,7 +92,7 @@ class _HomeState extends State<Home> {
                                                       .width *
                                                   0.9) /
                                               2.3,
-                                          child: Text(element['status'],
+                                          child: Text(data[i]['status'],
                                               textAlign: TextAlign.start,
                                               style: const TextStyle(
                                                 fontWeight: FontWeight.bold,
@@ -103,7 +103,7 @@ class _HomeState extends State<Home> {
                                                       .width *
                                                   0.9) /
                                               2.3,
-                                          child: Text(element['species'],
+                                          child: Text(data[i]['species'],
                                               textAlign: TextAlign.start,
                                               style: const TextStyle(
                                                 fontWeight: FontWeight.bold,
@@ -130,7 +130,7 @@ class _HomeState extends State<Home> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) => Detalle(
-                                                        detalleData: element,
+                                                        detalleData: data[i],
                                                       )),
                                             );
                                           },
@@ -147,8 +147,8 @@ class _HomeState extends State<Home> {
                           ],
                         ),
                       ));
-                    }).toList(),
-                  )));
+                    })
+                  );
   }
 
   obtenerInformacion() {
